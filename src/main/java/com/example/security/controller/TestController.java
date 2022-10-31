@@ -1,5 +1,6 @@
 package com.example.security.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,8 @@ public class TestController {
 
 
     @GetMapping("/context/test")
-    public String contextTest() {
-        return "Authenticated";
+    public String contextTest(Authentication authentication) {
+        System.out.println(authentication.getName());
+        return "Authenticated" + authentication.getName();
     }
 }

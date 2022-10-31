@@ -27,11 +27,10 @@ public class TokeAuthenticationFilter extends OncePerRequestFilter {
         Authentication authenticate = manager.authenticate(tokenAuthentication);
         SecurityContextHolder.getContext().setAuthentication(authenticate);
         filterChain.doFilter(request, response);
-
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getServletPath().equals("/test");
+        return request.getServletPath().equals("/login");
     }
 }

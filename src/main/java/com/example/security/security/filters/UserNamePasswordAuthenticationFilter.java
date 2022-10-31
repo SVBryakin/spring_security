@@ -56,6 +56,6 @@ public class UserNamePasswordAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !request.getServletPath().equals("/test");
+        return !request.getServletPath().equals("/login");
     }
 }

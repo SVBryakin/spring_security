@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(oneTimePasswordAuthenticationProvider)
                 .authenticationProvider(userNamePasswordAuthenticationProvider)
                 .authenticationProvider(tokenAuthenticationProvider);
@@ -50,8 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilterAt(userNamePasswordAuthenticationFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(tokeAuthenticationFilter(), UserNamePasswordAuthenticationFilter.class);
-
-        http.authorizeRequests().anyRequest().permitAll();
     }
 
     @Bean
